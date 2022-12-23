@@ -5,6 +5,8 @@ console.log("Logs from your program will appear here!");
 
 const server = net.createServer((connection) => {
 
+  console.log("Hello from 6379 ");
+
   connection.write('+PONG\r\n');
 
 });
