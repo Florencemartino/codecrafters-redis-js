@@ -5,7 +5,11 @@ console.log("Logs from your program will appear here!");
 
 const server = net.createServer((connection) => {
 
-  connection.write('+PONG\r\n');
+  const foo = true
+
+  while (foo === true) {
+    connection.write('+PONG\r\n');
+  }
 
 });
 
