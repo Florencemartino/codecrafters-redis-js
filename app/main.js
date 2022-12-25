@@ -5,7 +5,19 @@ console.log("Logs from your program will appear here!");
 
 const server = net.createServer((connection) => {
 
-  connection.write('+PONG\r\n');
+
+  const client = net.createConnection({ port: 6379 }, () => {
+    // 'connect' listener.
+    connection.write('+PONG\r\n');
+    console.log('connected to server!');
+    client.write('world!\r\n');
+  });
+
+  while (client) {
+    connection.write('+PONG\r\n');
+  }
+
+
 
 });
 
