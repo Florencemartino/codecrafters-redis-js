@@ -5,7 +5,7 @@ console.log("Logs from your program will appear here!");
 
 const server = net.createServer((connection) => {
 
-  connection.write('+PONG\r\n');
+  connection.write('+PONG\r\n')
 
 });
 
