@@ -5,10 +5,9 @@ console.log("Logs from your program will appear here!");
 
 const server = net.createServer((connection) => {
 
-  console.log('New Client')
+  console.log('New Client connected')
 
   connection.on('data', data => {
-    console.log('connexion is on', data)
     connection.write('+PONG\r\n')
   })
 
