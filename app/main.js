@@ -7,7 +7,7 @@ const server = net.createServer((connection) => {
 
   console.log('New Client connected')
 
-  connection.on('data', data => {
+  connection.on('data', _data => {
     connection.write('+PONG\r\n')
   })
 
