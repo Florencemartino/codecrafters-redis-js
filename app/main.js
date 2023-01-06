@@ -7,8 +7,19 @@ const server = net.createServer((connection) => {
 
   console.log('New Client connected')
 
-  connection.on('data', _data => {
-    connection.write('+PONG\r\n')
+  connection.on('data', data => {
+
+    const test = data.toString()
+
+    const word = test.split('\n')[4]
+
+    console.log('_data', word)
+
+    if (!word) {
+      return connection.write('+PONG\r\n')
+    }
+
+    return connection.write(`+world\r\n`)
   })
 
   connection.on('end', () => {
