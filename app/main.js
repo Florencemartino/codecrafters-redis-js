@@ -11,15 +11,15 @@ const server = net.createServer((connection) => {
 
     const test = data.toString()
 
-    const word = test.split('\n')[4]
-
-    console.log('_data', word)
+    const word = test.split('\r\n')[4]
 
     if (!word) {
       return connection.write('+PONG\r\n')
     }
 
-    return connection.write(`+world\r\n`)
+    const wordRest = `+` + word + `\r\n`
+
+    return connection.write(wordRest)
   })
 
   connection.on('end', () => {
