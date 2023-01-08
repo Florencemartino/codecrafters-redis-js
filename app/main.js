@@ -9,17 +9,28 @@ const server = net.createServer((connection) => {
 
   connection.on('data', data => {
 
-    const test = data.toString()
+    const dataToString = data.toString()
 
-    const word = test.split('\r\n')[4]
 
-    if (!word) {
+
+    const command = dataToString.split('\r\n')[2]
+
+    console.log('command', command)
+
+    if (command.toLowerCase() === 'ping') {
       return connection.write('+PONG\r\n')
     }
 
-    const wordRest = `+` + word + `\r\n`
+    if (command.toLowerCase() === 'echo') {
+      const word = dataToString.split('\r\n')[4]
+      const wordRest = `+` + word + `\r\n`
+      return connection.write(wordRest)
+    }
 
-    return connection.write(wordRest)
+    if (command.toLowerCase() === 'set') {
+      console.log('SET WIP')
+    }
+
   })
 
   connection.on('end', () => {
